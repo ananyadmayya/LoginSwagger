@@ -3,6 +3,7 @@ package com.sangamone.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +36,13 @@ public class LoginController {
       public Login viewLoginDetailsById(@PathVariable int user_id) {
     	  return loginRepo.findById(user_id).get();
     	  
+    
+    	  
+      }
+      @DeleteMapping("/deleteLoginDetails/{user_id}")
+      public String deleteLoginDetails(@PathVariable("user_id") int user_id) {
+    	  loginRepo.deleteById(user_id);
+    	  return "deleted";
       }
       
 }
